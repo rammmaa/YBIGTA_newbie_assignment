@@ -1,52 +1,49 @@
 from lib import SegmentTree
 import sys
-
-
-"""
-TODO:
-- 일단 SegmentTree부터 구현하기
-- main 구현하기
-"""
+input = sys.stdin.readline
 
 
 class Pair(tuple[int, int]):
-    """
-    힌트: 2243, 3653에서 int에 대한 세그먼트 트리를 만들었다면 여기서는 Pair에 대한 세그먼트 트리를 만들 수 있을지도...?
-    """
     def __new__(cls, a: int, b: int) -> 'Pair':
         return super().__new__(cls, (a, b))
 
     @staticmethod
     def default() -> 'Pair':
-        """
-        기본값
-        이게 왜 필요할까...?
-        """
         return Pair(0, 0)
 
     @staticmethod
     def f_conv(w: int) -> 'Pair':
-        """
-        원본 수열의 값을 대응되는 Pair 값으로 변환하는 연산
-        이게 왜 필요할까...?
-        """
         return Pair(w, 0)
 
     @staticmethod
-    def f_merge(a: Pair, b: Pair) -> 'Pair':
-        """
-        두 Pair를 하나의 Pair로 합치는 연산
-        이게 왜 필요할까...?
-        """
-        return Pair(*sorted([*a, *b], reverse=True)[:2])
+    def f_merge(a: 'Pair', b: 'Pair') -> 'Pair':
+        # 두 구간에서 가장 큰 값 2개를 뽑아 합침
+        candidates = sorted([a[0], a[1], b[0], b[1]], reverse=True)
+        return Pair(candidates[0], candidates[1])
 
     def sum(self) -> int:
         return self[0] + self[1]
 
 
 def main() -> None:
-    # 구현하세요!
-    pass
+    n = int(input())
+    arr = list(map(int, input().split()))
+    m = int(input())
+
+    arr_pair = [Pair.f_conv(x) for x in arr]
+    st = SegmentTree(arr_pair, Pair.f_merge, Pair.default())
+
+    for _ in range(m):
+        query = list(map(int, input().split()))
+        if query[0] == 1:
+            # 업데이트
+            i, v = query[1], query[2]
+            st.update(i - 1, Pair.f_conv(v))
+        else:
+            # 구간 쿼리
+            l, r = query[1], query[2]
+            res = st.query(l - 1, r - 1)
+            print(res.sum())
 
 
 if __name__ == "__main__":

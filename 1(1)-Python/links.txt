@@ -12,6 +12,6 @@
 3080 
 5670 
 
-2243 
-3653 
-17408
+2243 https://www.acmicpc.net/source/96272384
+3653 https://www.acmicpc.net/source/96272393
+17408 https://www.acmicpc.net/source/96272395
