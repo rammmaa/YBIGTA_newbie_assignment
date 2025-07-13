@@ -1,3 +1,5 @@
+cd "$(dirname "$0")"
+
 # anaconda(또는 miniconda)가 존재하지 않을 경우 설치해주세요!
 ## TODO
 
@@ -38,7 +40,7 @@ fi
 conda install mypy -y --quiet
 
 # Submission 폴더 파일 실행
-cd "/Users/yoons/Desktop/1(2)-CS_basics/submission" || { echo "[INFO] submission 디렉토리로 이동 실패"; exit 1; }
+cd "submission" || { echo "[INFO] submission 디렉토리로 이동 실패"; exit 1; }
 
 for file in *.py; do
     if [ -f "$file" ]; then
