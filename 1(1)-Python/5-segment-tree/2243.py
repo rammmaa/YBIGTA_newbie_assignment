@@ -19,7 +19,7 @@ def query_kth(st: SegmentTree, k: int) -> int:
         else:
             k -= left
             idx = 2 * idx + 1
-    return idx - st.n  # 0-based 인덱스 반환
+    return idx - st.n  
 
 def main() -> None:
     n = int(input())
@@ -31,10 +31,9 @@ def main() -> None:
         if cmd[0] == 1:
             k = cmd[1]
             taste_idx = query_kth(st, k)
-            print(taste_idx + 1)  # 맛 번호는 1-based
-            # 현재 값 읽기
+            print(taste_idx + 1)  
             current_val = st.query(taste_idx, taste_idx)
-            st.update(taste_idx, current_val - 1)  # 1개 줄이기
+            st.update(taste_idx, current_val - 1)  
         else:
             taste, cnt = cmd[1], cmd[2]
             taste_idx = taste - 1

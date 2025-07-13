@@ -17,7 +17,6 @@ class Pair(tuple[int, int]):
 
     @staticmethod
     def f_merge(a: 'Pair', b: 'Pair') -> 'Pair':
-        # 두 구간에서 가장 큰 값 2개를 뽑아 합침
         candidates = sorted([a[0], a[1], b[0], b[1]], reverse=True)
         return Pair(candidates[0], candidates[1])
 
@@ -36,11 +35,9 @@ def main() -> None:
     for _ in range(m):
         query = list(map(int, input().split()))
         if query[0] == 1:
-            # 업데이트
             i, v = query[1], query[2]
             st.update(i - 1, Pair.f_conv(v))
         else:
-            # 구간 쿼리
             l, r = query[1], query[2]
             res = st.query(l - 1, r - 1)
             print(res.sum())

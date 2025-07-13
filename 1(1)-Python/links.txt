@@ -9,8 +9,8 @@
 1629 https://www.acmicpc.net/source/96184727
 10830 https://www.acmicpc.net/source/96184739
 
-3080 
-5670 
+3080 https://www.acmicpc.net/source/96297419
+5670 https://www.acmicpc.net/source/96297006
 
 2243 https://www.acmicpc.net/source/96272384
 3653 https://www.acmicpc.net/source/96272393

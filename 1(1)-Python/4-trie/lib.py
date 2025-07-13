@@ -25,12 +25,23 @@ class Trie(list[TrieNode[T]]):
         self.append(TrieNode(body=None))
 
     def push(self, seq: Iterable[T]) -> None:
-        """
-        seq: T의 열 (list[int]일 수도 있고 str일 수도 있고 등등...)
+        node_idx = 0
 
-        action: trie에 seq을 저장하기
-        """
-        # 구현하세요!
-        pass
+        for element in seq:
+            curr_node = self[node_idx]
 
-    # 구현하세요!
+            found = False
+            for child_idx in curr_node.children:
+                if self[child_idx].body == element:
+                    node_idx = child_idx
+                    found = True
+                    break
+
+            if not found:
+                new_node = TrieNode(body=element)
+                self.append(new_node)
+                new_idx = len(self) - 1
+                curr_node.children.append(new_idx)
+                node_idx = new_idx
+
+        self[node_idx].is_end = True
