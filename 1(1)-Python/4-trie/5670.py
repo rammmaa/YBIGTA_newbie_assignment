@@ -1,8 +1,22 @@
 from lib import Trie
 import sys
-from typing import Optional
 
 def count(trie: Trie, query_seq: str) -> int:
+    """
+    주어진 문자열을 입력할 때, 자동완성이 작동하지 않아 직접 눌러야 하는 
+    최소 키 입력 횟수를 계산
+
+    자동완성 기준:
+    - 현재 노드가 여러 자식을 가질 경우
+    - 현재 노드가 단어의 끝일 경우
+
+    Args:
+        trie (Trie): 단어들이 저장된 Trie 자료구조
+        query_seq (str): 키 입력 횟수를 구하고자 하는 단어
+
+    Returns:
+        int: 해당 단어를 입력할 때 필요한 최소 키 입력 수
+    """
     pointer: int = 0
     cnt = 0
 

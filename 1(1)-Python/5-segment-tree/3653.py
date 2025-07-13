@@ -2,7 +2,7 @@ from lib import SegmentTree
 import sys
 input = sys.stdin.readline
 
-def solve():
+def main():
     T = int(input())
     MAX = 200_000
 
@@ -18,7 +18,8 @@ def solve():
             pos[i] = n - i
             arr[pos[i]] = 1
 
-        st = SegmentTree(arr, lambda a, b: a + b, 0)
+        st = SegmentTree[int, int](arr, lambda a, b: a + b, 0, lambda x: x)
+
         curr_top = n 
 
         res = []
@@ -42,4 +43,4 @@ def solve():
         print(" ".join(map(str, res)))
 
 if __name__ == "__main__":
-    solve()
+    main()

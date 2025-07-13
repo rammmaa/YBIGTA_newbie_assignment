@@ -1,14 +1,25 @@
+from lib import Trie
 import sys
 
 MOD = 1_000_000_007
 
 def factorial_up_to(n: int):
+    """
+    1부터 n+1까지의 팩토리얼 값을 미리 계산하여 리스트로 반환
+    각 팩토리얼 값은 MOD(1,000,000,007)로 나눈 나머지를 사용
+
+    Args:
+        n (int): 계산할 최대 팩토리얼 수
+
+    Returns:
+        list[int]: 0부터 n+1까지의 팩토리얼 값을 담은 리스트
+    """
     facto = [1] * (n+2)
     for i in range(2, n+2):
         facto[i] = (facto[i-1] * i) % MOD
     return facto
 
-def main():
+def main() -> None:
     input = sys.stdin.readline
 
     n = int(input())

@@ -1,3 +1,4 @@
+from lib import Graph
 from typing import Callable
 import sys
 

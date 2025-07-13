@@ -1,17 +1,17 @@
 # 푼 문제만 기입하셔도 됩니다.
 # 형식: <문제번호> <제출 링크>
 
-1260 https://www.acmicpc.net/source/96184679
+1260 https://www.acmicpc.net/source/96304501
 
-2164 https://www.acmicpc.net/source/96184708
-11866 https://www.acmicpc.net/source/96184719
+2164 https://www.acmicpc.net/source/96304511
+11866 https://www.acmicpc.net/source/96304516
 
-1629 https://www.acmicpc.net/source/96184727
-10830 https://www.acmicpc.net/source/96184739
+1629 https://www.acmicpc.net/source/96304533
+10830 https://www.acmicpc.net/source/96304538
 
-3080 https://www.acmicpc.net/source/96297419
-5670 https://www.acmicpc.net/source/96297006
+3080 https://www.acmicpc.net/source/96304541
+5670 https://www.acmicpc.net/source/96304544
 
-2243 https://www.acmicpc.net/source/96272384
-3653 https://www.acmicpc.net/source/96272393
-17408 https://www.acmicpc.net/source/96272395
+2243 https://www.acmicpc.net/source/96304547
+3653 https://www.acmicpc.net/source/96304583
+17408 https://www.acmicpc.net/source/96304558
