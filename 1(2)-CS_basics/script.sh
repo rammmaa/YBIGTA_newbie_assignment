@@ -1,8 +1,5 @@
-#!/bin/zsh
-
 # anaconda(또는 miniconda)가 존재하지 않을 경우 설치해주세요!
 ## TODO
-source $(conda info --base)/etc/profile.d/conda.sh
 
 
 if ! command -v conda >/dev/null 2>&1; then
@@ -19,6 +16,8 @@ fi
 
 # Conda 환셩 생성 및 활성화
 ## TODO
+
+conda init
 conda create --name myenv python=3.10.8 --yes
 conda activate myenv
 
@@ -39,7 +38,7 @@ fi
 conda install mypy -y --quiet
 
 # Submission 폴더 파일 실행
-cd submission || { echo "[INFO] submission 디렉토리로 이동 실패"; exit 1; }
+cd "/Users/yoons/Desktop/1(2)-CS_basics/submission" || { echo "[INFO] submission 디렉토리로 이동 실패"; exit 1; }
 
 for file in *.py; do
     if [ -f "$file" ]; then
