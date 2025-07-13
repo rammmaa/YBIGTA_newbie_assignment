@@ -1,19 +1,3 @@
-#!/bin/bash
-
-# ⛔ 현재 zsh가 아니라면 zsh로 재실행
-if [ -z "$ZSH_VERSION" ]; then
-    if ! command -v zsh >/dev/null 2>&1; then
-        echo "[ERROR] zsh가 설치되어 있지 않습니다. 설치 후 다시 실행하세요."
-        exit 1
-    fi
-    exec zsh "$0" "$@"  # zsh로 재실행
-fi
-
-# ✅ 여기부터는 zsh로 실행 중일 때만 실행됨
-# zsh 전용 문법 및 실행 로직 사용 가능
-
-set -e
-
 cd "$(dirname "$0")"
 
 # anaconda(또는 miniconda)가 존재하지 않을 경우 설치해주세요!
