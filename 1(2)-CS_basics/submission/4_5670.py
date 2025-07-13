@@ -14,17 +14,36 @@ T = TypeVar("T")
 
 @dataclass
 class TrieNode(Generic[T]):
+    """
+    Trie의 각 노드를 표현하는 클래스
+
+    Attributes:
+        body (Optional[T]): 해당 노드가 저장하고 있는 값 (문자 하나 등)
+        children (list[int]): 자식 노드들의 인덱스를 저장한 리스트
+        is_end (bool): 단어가 이 노드에서 끝나는지를 나타내는 플래그
+    """
     body: Optional[T] = None
     children: list[int] = field(default_factory=lambda: [])
     is_end: bool = False
 
 
 class Trie(list[TrieNode[T]]):
+    """
+    Trie 자료구조 클래스
+    - 리스트를 상속하여 TrieNode들을 인덱스로 관리
+    - 루트 노드는 body=None인 노드로 초기화됨
+    """
     def __init__(self) -> None:
         super().__init__()
         self.append(TrieNode(body=None))
 
     def push(self, seq: Iterable[T]) -> None:
+        """
+        주어진 시퀀스를 Trie에 삽입
+
+        Args:
+            seq (Iterable[T]): 삽입할 문자열이나 시퀀스 
+        """
         node_idx = 0
 
         for element in seq:
@@ -48,18 +67,30 @@ class Trie(list[TrieNode[T]]):
 
 
 import sys
-from typing import Optional
 
 def count(trie: Trie, query_seq: str) -> int:
+    """
+    주어진 문자열을 입력할 때, 자동완성이 작동하지 않아 직접 눌러야 하는 
+    최소 키 입력 횟수를 계산
+
+    자동완성 기준:
+    - 현재 노드가 여러 자식을 가질 경우
+    - 현재 노드가 단어의 끝일 경우
+
+    Args:
+        trie (Trie): 단어들이 저장된 Trie 자료구조
+        query_seq (str): 키 입력 횟수를 구하고자 하는 단어
+
+    Returns:
+        int: 해당 단어를 입력할 때 필요한 최소 키 입력 수
+    """
     pointer: int = 0
     cnt = 0
 
     for element in query_seq:
-        # 버튼 누르는 조건: 분기점이거나 단어 끝
         if len(trie[pointer].children) > 1 or trie[pointer].is_end:
             cnt += 1
 
-        # 다음 노드 인덱스 찾기
         new_index: Optional[int] = None
         for child_idx in trie[pointer].children:
             if trie[child_idx].body == element:
@@ -67,12 +98,10 @@ def count(trie: Trie, query_seq: str) -> int:
                 break
 
         if new_index is None:
-            # 일치하는 자식이 없으면 중단 (필요에 따라 예외 처리 가능)
             break
 
         pointer = new_index
 
-    # 시작할 때 첫 글자는 무조건 눌러야 함
     return cnt + int(len(trie[0].children) == 1)
 
 

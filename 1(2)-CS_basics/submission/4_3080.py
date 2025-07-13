@@ -14,17 +14,36 @@ T = TypeVar("T")
 
 @dataclass
 class TrieNode(Generic[T]):
+    """
+    Trie의 각 노드를 표현하는 클래스
+
+    Attributes:
+        body (Optional[T]): 해당 노드가 저장하고 있는 값 (문자 하나 등)
+        children (list[int]): 자식 노드들의 인덱스를 저장한 리스트
+        is_end (bool): 단어가 이 노드에서 끝나는지를 나타내는 플래그
+    """
     body: Optional[T] = None
     children: list[int] = field(default_factory=lambda: [])
     is_end: bool = False
 
 
 class Trie(list[TrieNode[T]]):
+    """
+    Trie 자료구조 클래스
+    - 리스트를 상속하여 TrieNode들을 인덱스로 관리
+    - 루트 노드는 body=None인 노드로 초기화됨
+    """
     def __init__(self) -> None:
         super().__init__()
         self.append(TrieNode(body=None))
 
     def push(self, seq: Iterable[T]) -> None:
+        """
+        주어진 시퀀스를 Trie에 삽입
+
+        Args:
+            seq (Iterable[T]): 삽입할 문자열이나 시퀀스 
+        """
         node_idx = 0
 
         for element in seq:
@@ -52,12 +71,22 @@ import sys
 MOD = 1_000_000_007
 
 def factorial_up_to(n: int):
+    """
+    1부터 n+1까지의 팩토리얼 값을 미리 계산하여 리스트로 반환
+    각 팩토리얼 값은 MOD(1,000,000,007)로 나눈 나머지를 사용
+
+    Args:
+        n (int): 계산할 최대 팩토리얼 수
+
+    Returns:
+        list[int]: 0부터 n+1까지의 팩토리얼 값을 담은 리스트
+    """
     facto = [1] * (n+2)
     for i in range(2, n+2):
         facto[i] = (facto[i-1] * i) % MOD
     return facto
 
-def main():
+def main() -> None:
     input = sys.stdin.readline
 
     n = int(input())
@@ -66,7 +95,7 @@ def main():
 
     facto = factorial_up_to(n)
 
-    queue = [(0, n, 0)]  # list로 큐 흉내, pop(0) 써야 함. 비효율이지만 조건상 어쩔 수 없음.
+    queue = [(0, n, 0)]  
     result = 1
 
     while queue:

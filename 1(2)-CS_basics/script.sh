@@ -43,9 +43,9 @@ cd "submission" || { echo "[INFO] submission 디렉토리로 이동 실패"; exi
 
 for file in *.py; do
     if [ -f "$file" ]; then
-        # 문제번호 추출 (ex: 2243.py -> 2243)
-        full_name="${file%%.*}"   # 1_1260
-        problem_num="${full_name#*_}"  # 접두사 제거, 1260만 남음
+        # 문제번호 추출 
+        full_name="${file%%.*}"  
+        problem_num="${full_name#*_}"  
 
         input_file="../input/${problem_num}_input"
         output_file="../output/${problem_num}_output"
@@ -55,7 +55,7 @@ for file in *.py; do
             continue
         fi
 
-        # 파이썬 파일 실행 (input redirect, output redirect)
+        # 파이썬 파일 실행 
         python "$file" < "$input_file" > "$output_file"
         if [ $? -ne 0 ]; then
             echo "[INFO] $file 실행 실패"
