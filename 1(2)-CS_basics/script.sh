@@ -19,7 +19,9 @@ fi
 # Conda 환셩 생성 및 활성화
 ## TODO
 
-conda init
+CONDA_BASE=$(conda info --base)
+source "$CONDA_BASE/etc/profile.d/conda.sh"
+
 conda create --name myenv python=3.10.8 --yes
 conda activate myenv
 
