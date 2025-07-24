@@ -8,9 +8,8 @@ MBTI: ISTJ
 
 좋아하는 것: 피아노, 밴드, 뜨개질, 문학, 차, 만년필, 뜨개질, 이외 다수... 취미부자...
 
-기타: 국제캠퍼스 무악하우스 RA(25-1, 2), 모르고리즘 운영진, 신촌ICPC 2025-s 운영진,
-
-RCM/관설차회 등 소속
+기타: 국제캠퍼스 무악하우스 RA(25-1, 2), 모르고리즘 운영진, 신촌ICPC 2025-s 운영진, RCM/관설차회 등 소속
+특이사항: 아직 뭘 할지 잘 모르겠다...!!
 
 # 김현수
 
@@ -48,3 +47,4 @@ database/reviews_{사이트이름}.csv
 
 ![이미지1](https://i.imgur.com/niDtCoG.jpg)  
 ![이미지2](https://i.imgur.com/FB4KpiX.jpg)
+![이미지3])https://imgur.com/LsOR612.jpg)
